@@ -14,7 +14,7 @@ To import this cmdlet, `cd` to the directory where you keep `Start-VSBJobAfterBa
 `-WaitSec` - Time to sleep till the next retry in seconds. *OPTIONAL* \
 \
 
-##Syntax
+## Syntax
 `Start-VSBJobAfterBackup -Job <CSbJob[]> [-Retries <int>] [-WaitSec <int>]`
 
 ## Usage
