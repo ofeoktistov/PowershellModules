@@ -6,12 +6,11 @@ If they are, it waits for the time specified and retries to run SureBackup for u
 ## Import
 To import this cmdlet, `cd` to the directory where you keep `Start-VSBJobAfterBackup.ps1` and execute the following: \
 `Import-Module .\Start-VSBJobAfterBackup.ps1`
-\
 
 ## Parameters
 `-Job` - An array of SureBackup jobs you want to start. *REQUIRED* \
 `-Retries` - Retries count in case any backup sessions are still running. *OPTIONAL* \
-`-WaitSec` - Time to sleep till the next retry in seconds. *OPTIONAL* \
+`-WaitSec` - Time to sleep till the next retry in seconds. *OPTIONAL*
 
 ## Syntax
 `Start-VSBJobAfterBackup -Job <CSbJob[]> [-Retries <int>] [-WaitSec <int>]`
