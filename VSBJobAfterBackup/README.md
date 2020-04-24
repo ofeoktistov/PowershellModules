@@ -1,7 +1,7 @@
 # Start SureBackup Job after all Backup Jobs stopped
 
 This cmdlet checks if any backup sessions are still running and starts SureBackup job if they are not.
-If they are, it waits for the time specified and retries to run SureBackup for up to the count specified.
+If they are, it waits for the number of seconds specified and retries to run SureBackup for up to the times passed.
 
 ## Import
 To import this cmdlet, `cd` to the directory where you keep `Start-VSBJobAfterBackup.ps1` and execute the following: \
