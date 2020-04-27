@@ -8,7 +8,7 @@ param(
     )]
     [Veeam.Backup.Core.SureBackup.CSbJob[]]$Job,
     [int]$retries,
-    [int]$waitS
+    [int]$waitSec
 
 )
 $Count = 0
@@ -26,7 +26,7 @@ do {
         $success = $true
        }
        elseif ($sessions -ne $null) {
-            write-host 'Some backup jobs are still running. Sleeping for'$waitS 'seconds'
+            write-host 'Some backup jobs are still running. Sleeping for'$waitSec 'seconds'
             Start-Sleep -Seconds $waitS
             $Count += 1
             write-host 'Retry '$Count
