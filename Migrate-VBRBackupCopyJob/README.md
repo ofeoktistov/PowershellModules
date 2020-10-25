@@ -12,11 +12,12 @@ To import this cmdlet, `cd` to the directory where `Migrate-VBRBackupCopyJob.ps1
 
 ## Usage
 
-To migrate specific backup copy jobs: \
+To migrate specific backup copy jobs: 
 ```
 $jobs = Get-VBRJob -Name 'Backup Copy Job *'
 Migrate-VBRBackupCopyJob -SourceJob $jobs
 ```
 
 To migrate all backup copy jobs: \
-`Migrate-VBRBackupCopyJob -ApplyToAll`\
+
+`Migrate-VBRBackupCopyJob -ApplyToAll`
