@@ -6,19 +6,18 @@ To import this cmdlet, `cd` to the directory where `Migrate-VBRBackupCopyJob.ps1
 `Import-Module .\Migrate-VBRBackupCopyJob.ps1`
 
 ## Parameters
-`-SourceJob` - accepts CBackup \
-`-Backup` - pulls info for backups. *OPTIONAL* \
-`-BackupCopy` - pulls info for backup copies. *OPTIONAL* \
+`-SourceJob` - accepts backup copy job object array. *REQUIRED* \
+`-ApplyToAll` - migrates all backup copy jobs to immediate mode. *REQUIRED* \
+
 \
-*If neither `-Backup` nor `-BackupCopy` specified, the report will be generated for both Backups and Backup Copies.*
 
 ## Usage
 
-To retrieve backup information on virtual machines specified: \
-`Get-BackupReport -Path 'C:\Temp\VirtualMachines.txt' -Backup` \
+To migrate specific backup copy jobs: \
+```
+$jobs = Get-VBRJob -Name 'Backup Copy Job *'
+Migrate-VBRBackupCopyJob -SourceJob $jobs
+```
 
-Backup copy information: \
-`Get-BackupReport -Path 'C:\Temp\VirtualMachines.txt' -BackupCopy`\
-
-Both: \
-`Get-BackupReport -Path 'C:\Temp\VirtualMachines.txt'`
+To migrate all backup copy jobs: \
+`Migrate-VBRBackupCopyJob -ApplyToAll`\
