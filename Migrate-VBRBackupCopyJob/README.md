@@ -7,9 +7,8 @@ To import this cmdlet, `cd` to the directory where `Migrate-VBRBackupCopyJob.ps1
 
 ## Parameters
 `-SourceJob` - accepts backup copy job object array. *REQUIRED* \
-`-ApplyToAll` - migrates all backup copy jobs to immediate mode. *REQUIRED* \
+`-ApplyToAll` - migrates all backup copy jobs to immediate mode. *REQUIRED* 
 
-\
 
 ## Usage
 
