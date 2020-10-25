@@ -18,6 +18,6 @@ $jobs = Get-VBRJob -Name 'Backup Copy Job *'
 Migrate-VBRBackupCopyJob -SourceJob $jobs
 ```
 
-To migrate all backup copy jobs: \
+To migrate all backup copy jobs: 
 
 `Migrate-VBRBackupCopyJob -ApplyToAll`
