@@ -1,4 +1,4 @@
- Function Migrate-VBRBackupCopyJob {
+Function Migrate-VBRBackupCopyJob {
 [CmdletBinding()]
 
 param (
