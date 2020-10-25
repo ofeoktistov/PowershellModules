@@ -1,4 +1,4 @@
-Function Migrate-VBRBackupCopyJob {
+ function Migrate-VBRBackupCopyJob {
 [CmdletBinding()]
 
 param (
@@ -15,7 +15,12 @@ try {
     if ($ApplyToAll) {
         $SourceJob = Get-VBRJob | where {$_.JobType -eq 'BackupSync'}
     }
+
 foreach ($source in $SourceJob) {
+    if ($source.JobType -ne 'BackupSync') {
+      throw 'Source job is not backup copy job'
+    }
+    else {
     $linkedJobs = @()
     foreach ($linkedJob in $sourceJob.LinkedJobIds) {
         $job = $jobs | where {$_.Id -eq $linkedJob}
@@ -34,8 +39,9 @@ foreach ($source in $SourceJob) {
   
 }
 }
-catch {
- Write-Host "An error occured."
- Write-Host $_
 }
+catch {
+ throw $_
+}
+
 } 
