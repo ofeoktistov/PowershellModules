@@ -24,7 +24,7 @@ foreach ($source in $SourceJob) {
     }
     else {
     $migratedName = "$($source.Name)_migrated"
-    $exists = Get-VBRJob -Name $migratedName
+    $exists = Get-VBRJob -Name $migratedName | where {$_.JobType -eq 'SimpleBackupCopyPolicy'}
     if ($exists) {
      Write-Host "Job with the name $($source.Name) has already been migrated" -ForegroundColor Red
      Start-Sleep -Seconds 2
