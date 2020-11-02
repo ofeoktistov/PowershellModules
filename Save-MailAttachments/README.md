@@ -10,7 +10,7 @@ To import this cmdlet, `cd` to the directory where `Save-MailAttachments.ps1` is
 `-Username` - accepts target mailbox address. *REQUIRED* \
 `-Password` - accepts target mailbox password. *REQUIRED* \
 `-Port` - accepts IMAP connection port. *REQUIRED* \
-`-TargetPath` - accepts directory, where attachments will be saved. *REQUIRED*
+`-TargetPath` - accepts directory, where attachments will be saved. *REQUIRED* \
 `-DeleteFromInbox` - specify if you want to delete emails with attachments from inbox. *REQUIRED*
 
 
