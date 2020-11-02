@@ -20,4 +20,4 @@ To download attachments locally:
 `Save-MailAttachments -IMAPServer imap.yandex.ru -Username 'username@yandex.ru' -Password 'password' -Port 993 -TargetPath 'C:\Temp\'`
 
 To download attachments locally and delete emails with attachments from Inbox:
-`Save-MailAttachments -IMAPServer imap.yandex.ru -Username 'username@yandex.ru' -Password 'password' -Port 993 -TargetPath 'C:\Temp\'`
+`Save-MailAttachments -IMAPServer imap.yandex.ru -Username 'username@yandex.ru' -Password 'password' -Port 993 -TargetPath 'C:\Temp\' -DeleteFromInbox`
