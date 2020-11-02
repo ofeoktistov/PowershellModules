@@ -18,21 +18,27 @@ param(
     [String]$Password,
 
     [Parameter(Mandatory=$true)]
-    [String]$TargetPath
+    [String]$TargetPath,
+
+    [Parameter(Mandatory=$false)]
+    [Switch]$DeleteFromInbox
 )
-$fileDir = $TargetPath
-$client = Connect-IMAP -Server $IMAPServer -Port $Port -UserName $Username -Password $Password
+$client = [MailKit.Net.Imap.ImapClient]::new()
+$client.Connect($IMAPServer, $Port)
+$client.Authenticate($Username, $Password)
 $access = [MailKit.FolderAccess]::ReadWrite
-$folder = Get-IMAPFolder -Client $client -FolderAccess $access
-$messages = $folder.Messages
-$attachments = $messages[-1].BodyParts | where {$_.IsAttachment -eq $true}
-foreach ($attachment in $attachments) {
-    $stream = [System.IO.File]::Create("$($fileDir)$($attachment.FileName)")
-    $filePath = "$($fileDir)$($attachment.FileName)"
+$client.Inbox.Open($access)
+$items = [MailKit.MessageSummaryItems]::UniqueId
+$ids = $client.Inbox.Fetch(0, -1, $items) | select UniqueId, Index
+$flag = [MailKit.MessageFlags]::Deleted
+foreach ($id in $ids) {
+    if ($client.Inbox.GetMessage($id.UniqueId).BodyParts.IsAttachment -eq $true) {
+    $stream = [System.IO.File]::Create("$($TargetPath)$($attachment.FileName)")
     $attachment.ContentObject.DecodeTo($stream)
     $stream.Close()
+        if ($DeleteFromInbox) {
+            $client.Inbox.SetFlags($id.UniqueId, $flag, $true)
+        }
+    }
+  }
 }
-}
-
-
-
